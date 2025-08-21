@@ -1,4 +1,4 @@
 Authentication:
     ✔ Clean up parameters for auth and handle database transactions @started(25-08-21 16:59) @done(25-08-21 18:45) @lasted(1h46m59s)
-    ☐ Setup token generation and sending back a token
+    ✔ Setup token generation and sending back a token @started(25-08-21 19:17) @done(25-08-21 19:31) @lasted(14m49s)
     ☐ Add testing
