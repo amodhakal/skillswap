@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "server:run": "cd server && ./gradlew bootRun",
+    "server:test": "cd server && ./gradlew test"
+  }
+}
