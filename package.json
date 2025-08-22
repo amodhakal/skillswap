@@ -3,6 +3,7 @@
     "server:refresh": "cd server && ./gradlew --refresh-dependencies",
     "server:build": "cd server && ./gradlew build",
     "server:run": "cd server && ./gradlew bootRun",
-    "server:test": "cd server && ./gradlew test"
+    "server:test": "cd server && ./gradlew test",
+    "server:coverage": "cd server && ./gradlew test jacocoTestReport && live-server build/reports/jacoco/test/html"
   }
 }

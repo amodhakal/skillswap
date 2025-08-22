@@ -1,7 +1,6 @@
 package com.amodhakal.skillswap.implementation;
 
 import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 
 import java.util.Date;
@@ -10,7 +9,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.amodhakal.skillswap.services.TokenService;
+import com.amodhakal.skillswap.service.TokenService;
 
 @Service
 public class TokenServiceImpl implements TokenService {

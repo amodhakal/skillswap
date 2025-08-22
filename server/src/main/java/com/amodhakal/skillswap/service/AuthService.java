@@ -1,4 +1,4 @@
-package com.amodhakal.skillswap.services;
+package com.amodhakal.skillswap.service;
 
 public interface AuthService {
     public String handleSignup(String name, String email, String password) throws IllegalArgumentException;

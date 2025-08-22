@@ -1,4 +1,4 @@
-package com.amodhakal.skillswap.services;
+package com.amodhakal.skillswap.service;
 
 import java.util.UUID;
 

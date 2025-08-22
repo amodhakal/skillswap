@@ -3,7 +3,7 @@ package com.amodhakal.skillswap.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.amodhakal.skillswap.dto.AuthDto;
-import com.amodhakal.skillswap.services.AuthService;
+import com.amodhakal.skillswap.service.AuthService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

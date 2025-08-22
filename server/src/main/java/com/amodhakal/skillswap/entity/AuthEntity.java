@@ -1,4 +1,4 @@
-package com.amodhakal.skillswap.entities;
+package com.amodhakal.skillswap.entity;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

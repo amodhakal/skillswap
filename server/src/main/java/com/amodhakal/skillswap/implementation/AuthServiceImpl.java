@@ -3,10 +3,10 @@ package com.amodhakal.skillswap.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.amodhakal.skillswap.entities.AuthEntity;
+import com.amodhakal.skillswap.entity.AuthEntity;
 import com.amodhakal.skillswap.repository.AuthRepository;
-import com.amodhakal.skillswap.services.AuthService;
-import com.amodhakal.skillswap.services.TokenService;
+import com.amodhakal.skillswap.service.AuthService;
+import com.amodhakal.skillswap.service.TokenService;
 
 @Service
 public class AuthServiceImpl implements AuthService {
