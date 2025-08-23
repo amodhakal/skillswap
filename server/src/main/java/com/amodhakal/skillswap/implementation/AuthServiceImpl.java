@@ -3,6 +3,7 @@ package com.amodhakal.skillswap.implementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.amodhakal.skillswap.dto.TokenDto;
 import com.amodhakal.skillswap.entity.AuthEntity;
 import com.amodhakal.skillswap.repository.AuthRepository;
 import com.amodhakal.skillswap.service.AuthService;
@@ -11,13 +12,13 @@ import com.amodhakal.skillswap.service.TokenService;
 @Service
 public class AuthServiceImpl implements AuthService {
     @Autowired
-    AuthRepository authRepository;
+    private AuthRepository authRepository;
 
     @Autowired
-    TokenService tokenService;
+    private TokenService tokenService;
 
     @Override
-    public String handleSignup(String name, String email, String password) throws IllegalArgumentException {
+    public TokenDto handleSignup(String name, String email, String password) throws IllegalArgumentException {
         if (name == null || email == null || password == null) {
             throw new IllegalArgumentException("Invalid credentials");
         }
@@ -34,7 +35,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public String handleSignin(String email, String password) throws IllegalArgumentException {
+    public TokenDto handleSignin(String email, String password) throws IllegalArgumentException {
         if (email == null || password == null) {
             throw new IllegalArgumentException("Invalid credentials");
         }

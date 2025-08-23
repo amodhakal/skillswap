@@ -1,7 +1,9 @@
 package com.amodhakal.skillswap.service;
 
-public interface AuthService {
-    public String handleSignup(String name, String email, String password) throws IllegalArgumentException;
+import com.amodhakal.skillswap.dto.TokenDto;
 
-    public String handleSignin(String email, String password) throws IllegalArgumentException;
+public interface AuthService {
+    public TokenDto handleSignup(String name, String email, String password) throws IllegalArgumentException;
+
+    public TokenDto handleSignin(String email, String password) throws IllegalArgumentException;
 }

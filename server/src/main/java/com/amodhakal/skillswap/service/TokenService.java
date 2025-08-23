@@ -2,6 +2,8 @@ package com.amodhakal.skillswap.service;
 
 import java.util.UUID;
 
+import com.amodhakal.skillswap.dto.TokenDto;
+
 public interface TokenService {
-    String generateToken(UUID userId);
+    TokenDto generateToken(UUID userId);
 }

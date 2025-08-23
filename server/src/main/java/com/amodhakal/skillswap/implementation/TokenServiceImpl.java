@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.amodhakal.skillswap.dto.TokenDto;
 import com.amodhakal.skillswap.service.TokenService;
 
 @Service
@@ -17,15 +18,18 @@ public class TokenServiceImpl implements TokenService {
     private String secretKey;
 
     @Override
-    public String generateToken(UUID userId) {
-        long nextWeek = System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000;
+    public TokenDto generateToken(UUID userId) {
+        Long expirationDate = System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000; // Next week
         byte[] keyBytes = secretKey.getBytes();
-        return Jwts.builder()
+
+        String token = Jwts.builder()
                 .subject(userId.toString())
                 .issuedAt(new Date())
-                .expiration(new Date(nextWeek))
+                .expiration(new Date(expirationDate))
                 .signWith(Keys.hmacShaKeyFor(keyBytes))
                 .compact();
+
+        return new TokenDto(token, expirationDate);
     }
 
 }
