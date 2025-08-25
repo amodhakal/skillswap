@@ -17,5 +17,5 @@ Authentication:
     
     Frontend:
         ✔ Setup the frontend client @started(25-08-22 22:48) @done(25-08-22 23:36) @lasted(48m27s)
+        ✔ Add a signup page handler @started(25-08-24 11:43) @done(25-08-25 00:58) @lasted(13h15m21s)
         ☐ Add a signin page handler
-        ☐ Add a signup page handler

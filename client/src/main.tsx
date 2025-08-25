@@ -12,14 +12,14 @@ import store from "./store";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/auth/signup" element={<Signup />} />
-          <Route path="/auth/signin" element={<Signin />} />
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/auth/signup" element={<Signup />} />
+            <Route path="/auth/signin" element={<Signin />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
   </StrictMode>
 );

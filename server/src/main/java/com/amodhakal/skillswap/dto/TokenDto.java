@@ -12,5 +12,5 @@ public class TokenDto {
 
     @Getter
     @Setter
-    private Long expirationDate;
+    private Long expiration;
 }
