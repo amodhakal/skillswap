@@ -68,7 +68,7 @@ export default function Signup() {
         <div className="mt-2">
           <p className="flex justify-end">
             Have an account,
-            <Link to="/signin" className="ml-1 text-blue-600">
+            <Link to="/auth/signin" className="ml-1 text-blue-600">
               sign in!
             </Link>
           </p>
