@@ -12,7 +12,7 @@ import org.springframework.test.annotation.DirtiesContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -38,7 +38,8 @@ public class AuthControllerTest {
 		mockMvc.perform(post("/api/auth/signup")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(json)).andExpect(status().isBadRequest())
-				.andExpect(content().string("User already exists"));
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.error").value("User already exists"));
 	}
 
 	@Test
@@ -57,6 +58,7 @@ public class AuthControllerTest {
 		mockMvc.perform(post("/api/auth/signin")
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(failureJson)).andExpect(status().isBadRequest())
-				.andExpect(content().string("Invalid credentials"));
+				.andExpect(content().contentType(MediaType.APPLICATION_JSON))
+				.andExpect(jsonPath("$.error").value("Invalid credentials"));
 	}
 }
