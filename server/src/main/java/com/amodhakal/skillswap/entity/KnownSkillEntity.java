@@ -9,31 +9,33 @@ import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Setter;;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class SkillEntity {
+public class KnownSkillEntity {
     @Id
     @Getter
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Getter
-    @Column(nullable = false, unique = true)
-    private String name;
+    @Column(unique = true)
+    private UUID skillId;
+
+    @Getter
+    @Column(nullable = false)
+    private UUID userId;
 
     @Getter
     @Setter
     @Column(nullable = false)
-    private SkillStatus status = SkillStatus.AVAILABLE;
+    private String proof;
 
-    public enum SkillStatus {
-        AVAILABLE, BLOCKED
-    };
-
-    public SkillEntity(String name) {
-        this.name = name;
+    public KnownSkillEntity(UUID skillId, UUID userId, String proof) {
+        this.skillId = skillId;
+        this.userId = userId;
+        this.proof = proof;
     }
 }
