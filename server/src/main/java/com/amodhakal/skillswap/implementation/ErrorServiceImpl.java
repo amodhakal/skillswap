@@ -2,7 +2,6 @@ package com.amodhakal.skillswap.implementation;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import com.amodhakal.skillswap.dto.ErrorDto;
 import com.amodhakal.skillswap.service.ErrorService;
 

@@ -37,10 +37,10 @@ public class SkillServiceImpl implements SkillService {
     }
 
     @Override
-    public void addKnownSkills(List<KnownSkillDto> knownSkills, UUID userId) throws IllegalAccessException {
+    public void addKnownSkills(List<KnownSkillDto> knownSkills, UUID userId) throws IllegalArgumentException {
         for (KnownSkillDto skill : knownSkills) {
-            if (skill.getUserId() == null || skill.getUserId() == null || skill.getProof() == null) {
-                throw new IllegalArgumentException("A field in a know skill is missing");
+            if (skill.getSkillId() == null || skill.getProof() == null) {
+                throw new IllegalArgumentException("A field in a known skill is missing");
             }
 
             Optional<SkillEntity> foundSkill = skillRepository.findById(skill.getSkillId());
@@ -48,13 +48,13 @@ public class SkillServiceImpl implements SkillService {
                 throw new IllegalArgumentException("Skill is not found");
             }
 
-            boolean isSkillKnownAlready = knownSkillRepository.findBySkillId(skill.getSkillId()).stream()
+            boolean isSkillKnown = knownSkillRepository.findBySkillId(skill.getSkillId()).stream()
                     .filter((KnownSkillEntity item) -> item.getUserId().equals(userId)).toList().size() > 0;
-            if (isSkillKnownAlready) {
+            if (isSkillKnown) {
                 throw new IllegalArgumentException("Skill already known");
             }
 
-            KnownSkillEntity newKnownSkill = new KnownSkillEntity(skill.getSkillId(), skill.getUserId(),
+            KnownSkillEntity newKnownSkill = new KnownSkillEntity(skill.getSkillId(), userId,
                     skill.getProof());
             knownSkillRepository.save(newKnownSkill);
         }

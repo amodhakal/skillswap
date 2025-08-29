@@ -9,7 +9,7 @@ import com.amodhakal.skillswap.dto.SkillDto;
 public interface SkillService {
     public void addSkill(String name) throws IllegalArgumentException;
 
-    public void addKnownSkills(List<KnownSkillDto> knownSkills, UUID userId) throws IllegalAccessException;
+    public void addKnownSkills(List<KnownSkillDto> knownSkills, UUID userId) throws IllegalArgumentException;
 
     public List<SkillDto> getSkills();
 }

@@ -1,5 +1,7 @@
 package com.amodhakal.skillswap.implementation;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 
@@ -32,4 +34,27 @@ public class TokenServiceImpl implements TokenService {
         return new TokenDto(token, expirationDate);
     }
 
+    @Override
+    public UUID getUserIdFromToken(String token) throws IllegalArgumentException {
+        try {
+            byte[] keyBytes = secretKey.getBytes();
+            Claims claims = Jwts.parser()
+                    .setSigningKey(Keys.hmacShaKeyFor(secretKey.getBytes()))
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody();
+
+            String userIdStr = claims.getSubject();
+            if (userIdStr == null) {
+                throw new IllegalArgumentException();
+            }
+            return UUID.fromString(userIdStr);
+        } catch (io.jsonwebtoken.ExpiredJwtException exception) {
+            throw new IllegalArgumentException("Expiration token");
+        } catch (JwtException exception) {
+            throw new IllegalArgumentException("Invalid token");
+        } catch (IllegalArgumentException exception) {
+            throw new IllegalArgumentException("Invalid token");
+        }
+    }
 }

@@ -6,4 +6,6 @@ import com.amodhakal.skillswap.dto.TokenDto;
 
 public interface TokenService {
     TokenDto generateToken(UUID userId);
+
+    UUID getUserIdFromToken(String token) throws IllegalArgumentException;
 }

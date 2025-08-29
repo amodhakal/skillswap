@@ -1,28 +1,28 @@
 package com.amodhakal.skillswap.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
+import java.util.List;
+import java.util.UUID;
 import com.amodhakal.skillswap.dto.KnownSkillDto;
 import com.amodhakal.skillswap.dto.SkillDto;
 import com.amodhakal.skillswap.service.ErrorService;
 import com.amodhakal.skillswap.service.SkillService;
+import com.amodhakal.skillswap.service.TokenService;
 
-import io.micrometer.core.ipc.http.HttpSender.Response;
-
-import java.util.List;
-import java.util.UUID;
-
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/skills")
 public class SkillController {
+    @Autowired
+    private TokenService tokenService;
+
     @Autowired
     private SkillService skillService;
 
@@ -40,12 +40,15 @@ public class SkillController {
     }
 
     @PostMapping("/known")
-    public ResponseEntity<Object> addKnownSkills(@RequestBody List<KnownSkillDto> knownSkills) {
+    public ResponseEntity<Object> addKnownSkills(
+            @RequestHeader("Authorization") String authorization,
+            @RequestBody List<KnownSkillDto> knownSkills) {
         try {
-            UUID userId = new UUID(0, 0); // TODO: Get userId from the JWT token
+            String token = authorization.replace("Bearer ", "");
+            UUID userId = tokenService.getUserIdFromToken(token);
             skillService.addKnownSkills(knownSkills, userId);
             return ResponseEntity.ok("Success");
-        } catch (IllegalAccessException exception) {
+        } catch (IllegalArgumentException exception) {
             return errorService.handleErrorResponse(exception);
         }
     }

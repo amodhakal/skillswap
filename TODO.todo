@@ -22,7 +22,7 @@ Authentication:
 User Profiles:
     ✔ Create functionality to add and get the available skills you can learn @started(25-08-25 11:39) @done(25-08-25 12:13) @lasted(34m21s)
     ✔ Create backend routes to CRUD the skills you can teach with the proof @started(25-08-25 18:12) @done(25-08-25 19:10) @lasted(58m43s)
-    ☐ Create a service to get userId from jwt token, and verify expiration hasn't happened. Fix previous todo with known skill
+    ✔ Create a service to get userId from jwt token, and verify expiration hasn't happened. Fix previous todo with known skill @started(25-08-28 19:54) @done(25-08-28 20:19) @lasted(25m18s)
     ☐ Create an onboarding workflow in the frontend to get the skills you can teach, along wih the proof, and the skills you want to learn
     ☐ Allow users to update their names, their emails, and their passwords, signing out, and delete the account from the profile as well
     ☐ Add testing
